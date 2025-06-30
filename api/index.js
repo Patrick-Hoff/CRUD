@@ -7,6 +7,15 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.use('/', userRoutes)
+// Rota padrão para testar se a API está rodando
+app.get('/', (req, res) => {
+  res.send('API online! 🚀');
+});
 
-app.listen(8081)
+app.use('/users', userRoutes)
+
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`)
+})
