@@ -1,11 +1,14 @@
-import mysql from 'mysql2'
+import mysql from 'mysql2';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const db = mysql.createConnection({
-  host: 'trolley.proxy.rlwy.net',
-  port: 56642,
-  user: 'root',
-  password: 'uuTbLRDkPpAiCGwesBMrUEAqITPQoTCN', // certinha agora
-  database: 'railway'
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
 
 // export const db = mysql.createConnection({

@@ -1,20 +1,23 @@
 {
   "name": "api",
   "version": "1.0.0",
+  "description": "API CRUD com Node.js, Express e MySQL",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Patrick Hoffmann Campos",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^17.0.1",
     "express": "^5.1.0",
-    "mysql2": "^3.14.1",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.10"
   }
 }

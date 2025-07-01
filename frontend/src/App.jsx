@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import GlobalStyle from './styles/style'
-import styled from 'styled-components'
-import { toast, ToastContainer } from 'react-toastify'
-import Grid from './components/Grid'
-import 'react-toastify/dist/ReactToastify.css'
-import Form from './components/form'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import GlobalStyle from './styles/style';
+import styled from 'styled-components';
+import { toast, ToastContainer } from 'react-toastify';
+import Grid from './components/Grid';
+import 'react-toastify/dist/ReactToastify.css';
+import Form from './components/form';
+import axios from 'axios';
 
 const Container = styled.div`
   width: 100vw;
@@ -15,29 +15,29 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
-`
+`;
 
 const Title = styled.h2`
   font-size: 2.5rem;
   font-style: italic;
-`
+`;
 
-function app() {
-  const [users, setUsers] = useState([])
-  const [onEdit, setOnEdit] = useState(null)
+function App() {
+  const [users, setUsers] = useState([]);
+  const [onEdit, setOnEdit] = useState(null);
 
   const getUsers = async () => {
     try {
-      const res = await axios.get('http://mysql-production-fdc8.up.railway.app')
-      setUsers(res.data.sort((a,b) => (a.nome > b.nome ? 1 : -1)))
-    }catch (error) {
-      toast.error(error)
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/users`);
+      setUsers(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+    } catch (error) {
+      toast.error(error.message || 'Erro ao buscar usuários');
     }
-  }
+  };
 
   useEffect(() => {
-    getUsers()
-  }, [setUsers ])
+    getUsers();
+  }, []);
 
   return (
     <>
@@ -49,7 +49,7 @@ function app() {
       <ToastContainer autoClose={3000} position="bottom-left" />
       <GlobalStyle />
     </>
-  )
+  );
 }
 
-export default app
+export default App;

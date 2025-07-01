@@ -3,7 +3,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 
-// Estilização da tabela
 const Table = styled.table`
   width: 100%;
   max-width: 1200px;
@@ -77,24 +76,21 @@ export const Td = styled.td`
   }
 `;
 
-// Componente Grid
 const Grid = ({ users, setUsers, setOnEdit }) => {
-
   const handleEdit = (item) => {
     setOnEdit(item);
   };
 
   const handleDelete = async (id) => {
-    await axios
-      .delete('http://localhost:8081/' + id)
-      .then(({ data }) => {
-        const newArray = users.filter((user) => user.id !== id);
-        setUsers(newArray);
-        toast.success(data);
-      })
-      .catch(({ data }) => toast.error(data));
-
-    setOnEdit(null);
+    try {
+      const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/users/${id}`);
+      const newArray = users.filter((user) => user.id !== id);
+      setUsers(newArray);
+      toast.success(data);
+      setOnEdit(null);
+    } catch (err) {
+      toast.error(err.response?.data || 'Erro ao excluir');
+    }
   };
 
   return (

@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react'
-import styled from "styled-components"
-import axios from 'axios'
-import { toast } from 'react-toastify'
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import { InputMask } from 'primereact/inputmask';
 
-// CSS do formulário
 const FormContainer = styled.form`
   width: 100%;
   max-width: 1200px;
@@ -22,14 +21,14 @@ const FormContainer = styled.form`
     flex-direction: column;
     align-items: stretch;
   }
-`
+`;
 
 const InputArea = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   min-width: 150px;
-`
+`;
 
 const Input = styled.input`
   width: 100%;
@@ -37,7 +36,7 @@ const Input = styled.input`
   border: 1px solid #bbb;
   border-radius: 5px;
   height: 40px;
-`
+`;
 
 const StyledInputMask = styled(InputMask)`
   width: 100%;
@@ -45,7 +44,7 @@ const StyledInputMask = styled(InputMask)`
   border: 1px solid #bbb;
   border-radius: 5px;
   height: 40px;
-`
+`;
 
 const Button = styled.button`
   padding: 10px;
@@ -60,9 +59,9 @@ const Button = styled.button`
   @media (max-width: 768px) {
     width: 100%;
   }
-`
+`;
 
-const Label = styled.label``
+const Label = styled.label``;
 
 function Form({ onEdit, setOnEdit, getUsers }) {
   const ref = useRef();
@@ -74,7 +73,7 @@ function Form({ onEdit, setOnEdit, getUsers }) {
       user.email.value = onEdit.email || '';
       user.telefone.value = onEdit.telefone || '';
       user.aniversario.value = onEdit.aniversario || '';
-    } else if(user) {
+    } else if (user) {
       user.nome.value = '';
       user.email.value = '';
       user.telefone.value = '';
@@ -105,14 +104,16 @@ function Form({ onEdit, setOnEdit, getUsers }) {
 
     try {
       if (onEdit) {
-        const { data } = await axios.put(`http://localhost:8081/${onEdit.id}`, payload);
+        const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/users/${onEdit.id}`, payload);
         toast.success(data);
       } else {
-        const { data } = await axios.post('http://localhost:8081', payload);
+        const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/users`, payload);
         toast.success(data);
       }
+
       getUsers();
       setOnEdit(null);
+
       user.nome.value = '';
       user.email.value = '';
       user.telefone.value = '';
