@@ -51,7 +51,7 @@ Projeto desenvolvido com Node.js no backend e React.js no frontend, utilizando M
 
 ## Deploy da aplicação :dash:
 
-> Insira aqui o link do deploy quando disponível.
+> https://crud-project-users.netlify.app/
 
 ---
 
