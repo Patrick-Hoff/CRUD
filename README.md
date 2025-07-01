@@ -16,7 +16,6 @@
 :small_blue_diamond: [Deploy da aplicação](#deploy-da-aplicação-dash)  
 :small_blue_diamond: [Pré-requisitos](#pré-requisitos)  
 :small_blue_diamond: [Como rodar a aplicação](#como-rodar-a-aplicação-arrow_forward)  
-:small_blue_diamond: [Futuras atualizações](#futuras-atualizações)  
 :small_blue_diamond: [Responsável pelo desenvolvimento](#responsável-pelo-desenvolvimento)
 
 ---
@@ -52,7 +51,7 @@ Projeto desenvolvido com Node.js no backend e React.js no frontend, utilizando M
 
 ## Deploy da aplicação :dash:
 
-> Insira aqui o link do deploy quando disponível.
+> https://crud-project-users.netlify.app/
 
 ---
 
@@ -107,7 +106,7 @@ npm run dev
 
 ### Frontend
 
-Entre na pasta do frontend (se estiver separada):  
+Entre na pasta do frontend 
 ```bash
 cd frontend
 ```
